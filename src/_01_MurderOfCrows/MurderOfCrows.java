@@ -3,6 +3,8 @@ package _01_MurderOfCrows;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class MurderOfCrows {
 
     ArrayList<Crow> theMurder = new ArrayList<Crow>();
@@ -17,7 +19,18 @@ public class MurderOfCrows {
         // 1. One of the Crows has eaten the diamond. You need to search
         //    through the stomach of each Crow, then print the name of the
         //    guilty Crow.
-
+for (int i = 0; i < theMurder.size(); i++) {
+	Crow crow = theMurder.get(i);
+	for (int j = 0; j < crow.getStomachContents().size(); j++) {
+		String s = crow.getStomachContents().get(j);
+		if (s.equals("diamond")) {
+			JOptionPane.showMessageDialog(null, "The guilty crow was " + crow.getName());
+			JOptionPane.showMessageDialog(null, "The amount of guilty crows that had to die were: " + i);
+		}
+		
+	}
+	
+}
         // 2. How many innocent crows had to die before the diamond was found?
 
     }

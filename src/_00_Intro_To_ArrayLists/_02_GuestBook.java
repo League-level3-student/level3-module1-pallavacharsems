@@ -2,9 +2,11 @@ package _00_Intro_To_ArrayLists;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class _02_GuestBook implements ActionListener {
@@ -20,27 +22,46 @@ public class _02_GuestBook implements ActionListener {
      * Guest #3: Greg Ganders
      * Guest #4: Donny Doners
      */
+	public static void main(String[] args) {
+		new _02_GuestBook().run();
+	}
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	JButton button1 = new JButton();
 	JButton button2 = new JButton();
-void setup() {
-button1.setText("Add Name");
-button2.setText("View Names");
-button1.addActionListener(this);
-button2.addActionListener(this);
-panel.add(button1);
-panel.add(button2);
-frame.add(panel);
-frame.pack();
-}
+	 ArrayList<String> names = new ArrayList<String>();
+	 
+private void run() {
+		// TODO Auto-generated method stub
+		frame.setVisible(true);
+		button1.setText("Add Name");
+		button2.setText("View Names");
+		button1.addActionListener(this);
+		button2.addActionListener(this);
+		panel.add(button1);
+		panel.add(button2);
+		frame.add(panel);
+		frame.pack();
+		
+	}
+
 @Override
-public void actionPerformed(ActionEvent arg0) {
+public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
-	
+	if(e.getSource() == button1) {
+		String addN = JOptionPane.showInputDialog("Please enter a name to add to the Guestbook!");
+		names.add(addN);
+	}
+	if(e.getSource() == button2) {
+		String s = "";
+		for (int i = 0; i < names.size(); i++) {
+			s += "Guest " + (i+1) + ": " + names.get(i) + "\n";
+		}
+		JOptionPane.showMessageDialog(null, s);
 }
 
 
 
 
+}
 }
