@@ -16,13 +16,23 @@ color[] sunColors = {
 
 void setup() {
   // 1. Set the size of your sketch
-  
+  size(800,800);
+  y = width/2;
 }
 
+int sunTopY = 200;
+int sunBottomY = 600;
+int sunCenterX = 400;
+int sunCenterY = 400;
+int sunRadius = 200;
+   float y = 0;
+   float h = 40;
+   float x = sunCenterX - sunRadius;
+   float w = 2 * sunRadius;
 
 void draw() {
   // 2. Draw the bgColor background color
-
+background(bgColor);
   /*
    * PART 1: Drawing the sun
    */
@@ -30,7 +40,9 @@ void draw() {
   // Draw an ellipse for the sun in the center of the window
   // Use fill(sunColors[0]) to make it yellow
   // Use noStroke() to remove the black outline
-
+fill(sunColors[0]);
+ellipse(sunCenterX,sunCenterY,sunRadius*2,sunRadius*2);
+noStroke();
   // Do you see a yellow sun like in the 1st image?
   // If not, fix your code before proceeding.
 
@@ -40,7 +52,18 @@ void draw() {
    * This will make the sun have gradually different colors from the 
    * top to bottom
    */
-
+loadPixels();
+for(int i = 0; i < pixels.length; i++){
+  color pcolor = pixels[i];
+  if(pcolor==sunColors[0]){
+    int y = i / width;
+    float step = map(y, sunTopY, sunBottomY, 0, 1);
+    color intColor = interpolateColor(sunColors, step);
+    pixels[i] = intColor;
+    
+  }
+}
+updatePixels();
   // Call the loadPixels() method to put all the pixel colors into
   // the pixels[] array
   // https://processing.org/reference/loadPixels_.html
@@ -82,6 +105,20 @@ void draw() {
    */
 
   // Set the fill color to the background color
+fill(bgColor);
+rect(x, y, w, h);
+y-=1;
+if(h>0){
+h-=0.2;
+}
+if(y == 350){
+y = sunBottomY;
+if(h <=0){
+h = 40;
+}
+}
+
+
 
   // To draw each rectangle we need to find its x, y, width, height
   // *The y position can be any value within the sun:
