@@ -18,6 +18,17 @@ void setup() {
   // 1. Set the size of your sketch
   size(800,800);
   y = width/2;
+  float a = y-50;
+float b = y-100;
+float c = y-150;
+  Rectangle r = new Rectangle(x, y, w, h);
+  Rectangle re = new Rectangle(x, a, w, h);
+  Rectangle rec = new Rectangle(x, b, w, h);
+  Rectangle react = new Rectangle(x, c, w, h);
+  reect.add(r);
+  reect.add(re);
+  reect.add(rec);
+  reect.add(react);
 }
 
 int sunTopY = 200;
@@ -25,10 +36,12 @@ int sunBottomY = 600;
 int sunCenterX = 400;
 int sunCenterY = 400;
 int sunRadius = 200;
+
    float y = 0;
    float h = 40;
    float x = sunCenterX - sunRadius;
    float w = 2 * sunRadius;
+ArrayList<Rectangle> reect = new ArrayList<Rectangle>();
 
 void draw() {
   // 2. Draw the bgColor background color
@@ -105,16 +118,20 @@ updatePixels();
    */
 
   // Set the fill color to the background color
+
+for(int i = 0; i < reect.size(); i++){
+Rectangle r = reect.get(i);
 fill(bgColor);
-rect(x, y, w, h);
-y-=1;
-if(h>0){
-h-=0.2;
+rect(r.x, r.y, r.w, r.h);
+r.y-=1;
+if(r.h>0){
+r.h-=0.2;
 }
-if(y == 350){
-y = sunBottomY;
-if(h <=0){
-h = 40;
+if(r.y <= 350){
+r.y = sunBottomY;
+if(r.h <=0){
+r.h = 40;
+}
 }
 }
 
@@ -211,5 +228,6 @@ class Rectangle {
     this.y = y;
     this.w = w;
     this.h = h;
+    
   }
 }
