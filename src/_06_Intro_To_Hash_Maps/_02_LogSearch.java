@@ -1,10 +1,16 @@
 package _06_Intro_To_Hash_Maps;
 
+import java.util.HashMap;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class _02_LogSearch {
     /*
      * Crate a HashMap of Integers for the keys and Strings for the values.
      * Create a GUI with three buttons.
+    
      * Button 1: Add Entry
      *      When this button is clicked, use an input dialog to ask the user
      *      to enter an ID number.
@@ -33,5 +39,17 @@ public class _02_LogSearch {
      *      If this ID exists in the HashMap, remove it. Otherwise, notify the
      *      user that the ID is not in the list.
      */
+
+	HashMap<Integer, String> hash = new HashMap<Integer, String>();
+	JFrame frame = new JFrame();
+	JPanel panel  = new JPanel();
+	JButton addEntry = new JButton();
+	JButton searchByID = new JButton();
+	JButton viewList = new JButton();
+	void setup() {
+		
+	}
+	}
+	
 
 }

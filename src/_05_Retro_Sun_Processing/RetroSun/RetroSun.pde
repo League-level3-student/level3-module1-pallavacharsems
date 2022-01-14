@@ -17,7 +17,7 @@ color[] sunColors = {
 void setup() {
   // 1. Set the size of your sketch
   size(800,800);
-  y = width/2;
+  y = height/2;
   float a = y-50;
 float b = y-100;
 float c = y-150;
@@ -120,19 +120,30 @@ updatePixels();
   // Set the fill color to the background color
 
 for(int i = 0; i < reect.size(); i++){
-Rectangle r = reect.get(i);
+
+ Rectangle r = reect.get(i);
 fill(bgColor);
 rect(r.x, r.y, r.w, r.h);
+
 r.y-=1;
 if(r.h>0){
 r.h-=0.2;
 }
 if(r.y <= 350){
+  if(i == 0){
 r.y = sunBottomY;
-if(r.h <=0){
+  } else if(i == 1){
+    r.y = sunBottomY-50;
+  } else if(i == 2){
+    r.y = sunBottomY-100;
+  } else if(i == 3){
+    r.y = sunBottomY-150;
+  }
+  
 r.h = 40;
+
 }
-}
+println(r.y);
 }
 
 
