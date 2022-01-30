@@ -18,9 +18,9 @@ void setup() {
   // 1. Set the size of your sketch
   size(800,800);
   y = height/2;
-  float a = y-50;
-float b = y-100;
-float c = y-150;
+  float a = y+50;
+float b = y+100;
+float c = y+150;
   Rectangle r = new Rectangle(x, y, w, h);
   Rectangle re = new Rectangle(x, a, w, h);
   Rectangle rec = new Rectangle(x, b, w, h);
@@ -126,21 +126,12 @@ fill(bgColor);
 rect(r.x, r.y, r.w, r.h);
 
 r.y-=1;
-if(r.h>0){
-r.h-=0.2;
-}
+r.h = map(r.y, 350, sunBottomY, 0, h);
 if(r.y <= 350){
-  if(i == 0){
 r.y = sunBottomY;
-  } else if(i == 1){
-    r.y = sunBottomY-50;
-  } else if(i == 2){
-    r.y = sunBottomY-100;
-  } else if(i == 3){
-    r.y = sunBottomY-150;
-  }
+
   
-r.h = 40;
+
 
 }
 println(r.y);
